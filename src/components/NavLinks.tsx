@@ -1,9 +1,4 @@
-export interface Category {
-  id: string;
-  slug: string;
-  nameBn: string;
-  icon: string;
-}
+import { Category } from "@/lib/utils";
 
 const NavLinks = async () => {
   const res = await fetch(
@@ -11,7 +6,7 @@ const NavLinks = async () => {
   );
   const data = await res.json();
   return (
-    <div className="container mx-auto px-4 py-4">
+    <div className="container mx-auto py-4">
       <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
         {data.map((n: Category) => (
           <div

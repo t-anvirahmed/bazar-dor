@@ -9,7 +9,7 @@ const Navbar = () => {
   });
   return (
     <div className="shadow-xs">
-      <div className="container mx-auto navbar py-4 sm:px-6">
+      <div className="container mx-auto navbar py-4 ">
         {/* Brand */}
         <div className="navbar-start w-full">
           <Link href="/" className="flex items-center gap-3 no-underline">

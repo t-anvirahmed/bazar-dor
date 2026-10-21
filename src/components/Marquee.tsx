@@ -1,20 +1,6 @@
 import React from "react";
 import MarqueeText from "react-marquee-text";
-import { toBanglaNumber, toBanglaUnit } from "../lib/utils";
-
-export interface PriceChange {
-  dir: "up" | "down" | "stable";
-  pct: number;
-}
-
-export interface Product {
-  id: number;
-  nameBn: string;
-  unit: string;
-  image: string;
-  today: number;
-  change: PriceChange;
-}
+import { Product, toBanglaNumber, toBanglaUnit } from "../lib/utils";
 
 const Marquee = async () => {
   const res = await fetch(
@@ -23,7 +9,7 @@ const Marquee = async () => {
   const data = await res.json();
   return (
     <>
-      <div className="overflow-hidden border-y border-green-100 bg-white">
+      <div className="overflow-hidden border-y border-green-100 bg-white lg:mb-8">
         <div className="flex items-center">
           <div className="min-w-0 flex-1 bg-green-50">
             <MarqueeText className="p-2" direction="right" duration={20}>
