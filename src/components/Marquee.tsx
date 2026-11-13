@@ -5,6 +5,9 @@ import { Product, toBanglaNumber, toBanglaUnit } from "../lib/utils";
 const Marquee = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/products",
+    {
+      next: { revalidate: 300 },
+    },
   );
   const data = await res.json();
   return (
@@ -12,7 +15,12 @@ const Marquee = async () => {
       <div className="overflow-hidden border-y border-green-100 bg-white lg:mb-8">
         <div className="flex items-center">
           <div className="min-w-0 flex-1 bg-green-50">
-            <MarqueeText className="p-2" direction="right" duration={20}>
+            <MarqueeText
+              className="p-2"
+              direction="right"
+              duration={20}
+              pauseOnHover={true}
+            >
               {data.map((d: Product) => (
                 <div
                   key={d.id}

@@ -38,7 +38,7 @@ export interface Market {
 }
 
 export interface Product {
-  id: number;
+  id: string;
   slug: string;
   nameBn: string;
   category: string;
@@ -51,5 +51,12 @@ export interface Product {
   lastWeek: number;
   lastMonth: number;
   change: PriceChange;
-  markets: Market;
+  markets: Market[];
 }
+
+const banglaDate = new Date().toLocaleDateString("bn-BD", {
+  dateStyle: "full",
+  timeZone: "Asia/Dhaka",
+});
+
+export default banglaDate;

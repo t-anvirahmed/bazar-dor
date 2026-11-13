@@ -1,12 +1,10 @@
 import Link from "next/link";
 import Logo from "../../public/logo-icon.png";
 import Image from "next/image";
+import banglaDate from "@/lib/utils";
+import UserInfo from "./UserInfo";
 
 const Navbar = () => {
-  const date = new Date().toLocaleDateString("bn-BD", {
-    dateStyle: "full",
-    timeZone: "Asia/Dhaka",
-  });
   return (
     <div className="shadow-xs">
       <div className="container mx-auto navbar py-4 ">
@@ -26,20 +24,16 @@ const Navbar = () => {
                 বাজার দর
               </span>
 
-              <p className="mt-1 text-xs text-gray-500 sm:text-sm">{date}</p>
+              <p className="mt-1 text-xs text-gray-500 sm:text-sm">
+                {banglaDate}
+              </p>
             </div>
           </Link>
         </div>
 
         {/* Actions */}
         <div className="navbar-end w-auto shrink-0 gap-2">
-          <Link href="/sign-in" className="secondary-btn">
-            সাইন ইন
-          </Link>
-
-          <Link href="/sign-up" className="primary-btn">
-            সাইন আপ
-          </Link>
+          <UserInfo />
         </div>
       </div>
     </div>

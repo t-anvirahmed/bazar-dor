@@ -1,5 +1,8 @@
 import Image from "next/image";
 import bannerHero from "../../public/bazar-hero.png";
+import banglaDate from "@/lib/utils";
+import Link from "next/link";
+import AllProducts from "./AllProducts";
 
 const Hero = () => {
   return (
@@ -11,11 +14,14 @@ const Hero = () => {
           priority
           width={600}
           height={500}
-          className="h-auto w-full max-w-[480px] object-contain"
+          className="h-auto w-full max-w-120 object-contain"
         />
 
         <div className="w-full text-center md:w-1/2 md:pl-6 md:text-left lg:pl-10">
-          <h1 className="text-3xl leading-tight font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+          <span className="bg-green-100 text-green-700 p-3 rounded-2xl text-sm">
+            {banglaDate}
+          </span>
+          <h1 className="mt-2 text-3xl leading-tight font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
             আজকের বাজারের দাম <br /> এক নজরে
           </h1>
 
@@ -25,9 +31,11 @@ const Hero = () => {
             সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
           </p>
 
-          <button className="primary-btn w-full sm:w-auto">
-            সব পণ্য দেখুন
-          </button>
+          <a href="#allProducts">
+            <button className="primary-btn w-full sm:w-auto">
+              সব পণ্য দেখুন
+            </button>
+          </a>
         </div>
       </div>
     </div>

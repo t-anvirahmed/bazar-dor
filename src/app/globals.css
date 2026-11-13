@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 .primary-btn {
   @apply btn border border-green-700 bg-green-700 text-white
          font-semibold shadow-sm
