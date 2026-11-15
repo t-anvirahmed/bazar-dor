@@ -3,6 +3,7 @@ import Logo from "../../public/logo-icon.png";
 import Image from "next/image";
 import banglaDate from "@/lib/utils";
 import UserInfo from "./UserInfo";
+import { Suspense } from "react";
 
 const Navbar = () => {
   return (
@@ -32,9 +33,15 @@ const Navbar = () => {
         </div>
 
         {/* Actions */}
-        <div className="navbar-end w-auto shrink-0 gap-2">
-          <UserInfo />
-        </div>
+        <Suspense
+          fallback={
+            <div className="h-10 w-32 animate-pulse rounded-full bg-gray-100" />
+          }
+        >
+          <div className="navbar-end w-auto shrink-0 gap-2">
+            <UserInfo />
+          </div>
+        </Suspense>
       </div>
     </div>
   );
