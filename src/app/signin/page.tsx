@@ -25,6 +25,17 @@ const SignInPage = () => {
       console.log(error);
     }
   };
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  const handleGithubSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
   return (
     <main className="flex items-center justify-center bg-green-50 py-12">
       <div className="w-full max-w-md rounded-2xl border border-green-100 bg-white p-6 shadow-sm">
@@ -96,6 +107,7 @@ const SignInPage = () => {
         {/* Social Sign In */}
         <div className="grid grid-cols-2 gap-3">
           <button
+            onClick={handleGoogleSignIn}
             type="button"
             className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-medium text-gray-700 transition hover:border-green-300 hover:bg-green-50"
           >
@@ -123,6 +135,7 @@ const SignInPage = () => {
           </button>
 
           <button
+            onClick={handleGithubSignIn}
             type="button"
             className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-medium text-gray-700 transition hover:border-green-300 hover:bg-green-50"
           >
