@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const UserInfo = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
   const { data: session, isPending } = authClient.useSession();
 
   if (isPending) {
@@ -27,7 +30,17 @@ const UserInfo = () => {
   }
 
   const handleSignOut = async () => {
-    await authClient.signOut();
+    const { error } = await authClient.signOut();
+
+    if (error) return;
+
+    setIsOpen(false);
+
+    if (pathname.startsWith("/product") || pathname.startsWith("/profile")) {
+      router.replace(`/signin?callbackUrl=${encodeURIComponent(pathname)}`);
+    } else {
+      router.refresh();
+    }
   };
 
   return (
